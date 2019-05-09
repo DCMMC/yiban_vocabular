@@ -69,7 +69,7 @@ def yiban_login(request):
                         'code': code,
                         'client_id': yiban_app_id,
                         'client_secret': yiban_app_secret,
-                        'redirect_uri': 'http://' + deploy_domain + '/index.html',
+                        'redirect_uri': 'http://f.yiban.cn/iapp429556',
                     }
                     url = 'https://oauth.yiban.cn/token/info?%s' % parse.urlencode( # noqa
                         params)
@@ -90,7 +90,7 @@ def yiban_login(request):
                     'https://oauth.yiban.cn/code/html?' +
                     'client_id={}&redirect_uri={}'.format( # noqa
                         yiban_app_id,
-                        'http://' + deploy_domain + '/index.html'
+                        'http://f.yiban.cn/iapp429556' 
                     ))
     elif request.method == 'POST':
         # 如果应用类型是站内应用或轻应用
@@ -105,7 +105,7 @@ def yiban_login(request):
                     'code': code,
                     'client_id': yiban_app_id,
                     'client_secret': yiban_app_secret,
-                    'redirect_uri': 'http://' + deploy_domain + '/index.html',
+                    'redirect_uri': 'http://f.yiban.cn/iapp429556',
                 }
                 url = 'https://oauth.yiban.cn/token/info?%s' % parse.urlencode(
                     params)
@@ -133,7 +133,7 @@ def yiban_login(request):
                     'code': code,
                     'client_id': yiban_app_id,
                     'client_secret': yiban_app_secret,
-                    'redirect_uri': 'http://' + deploy_domain + '/index.html',
+                    'redirect_uri': 'http://f.yiban.cn/iapp429556',
                 }
                 url = 'https://oauth.yiban.cn/token/info?%s' % parse.urlencode(
                     params)
