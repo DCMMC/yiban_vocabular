@@ -20,7 +20,7 @@ from django.http import JsonResponse
 from django.conf.urls import url
 from django.shortcuts import redirect
 from django.http import HttpResponseForbidden
-from urllib import parse
+# from urllib import parse
 import json
 from django.views.generic.base import TemplateView
 import requests
@@ -82,7 +82,7 @@ def yiban_login(request):
                     'https://oauth.yiban.cn/code/html?' +
                     'client_id={}&redirect_uri={}'.format( # noqa
                         yiban_app_id,
-                        'http://' + deploy_domain + '/index.html'
+                        in_site_address
                     ))
     else:
         return HttpResponseForbidden()
