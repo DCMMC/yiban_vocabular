@@ -8,5 +8,6 @@ verify_ssl = true
 [packages]
 django = "*"
 requests = "*"
+pycrypto = "*"
 
 [requires]
