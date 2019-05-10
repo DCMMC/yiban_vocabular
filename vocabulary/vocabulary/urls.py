@@ -45,7 +45,7 @@ def addUser(user_id):
     try:
         YibanUser.objects.get(user_id=user_id)
     except: # noqa
-        u = YibanUser(yiban_user_id=user_id)
+        u = YibanUser(user_id=user_id)
         u.today = 0
         u.history = json.dumps({})
         u.save()
