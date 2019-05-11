@@ -355,9 +355,11 @@ def get_user_info(request):
     if request.method == 'GET':
         access_token = request.session.get('access_token', None)
         if access_token:
+            print(access_token)
             r = requests.get('https://openapi.yiban.cn/user/me?access_token='
                              + access_token)
             r.encoding = 'utf-8'
+            print(r.text)
             result = json.loads(r.text)
             if result.get('status', None) == 'success':
                 return {
