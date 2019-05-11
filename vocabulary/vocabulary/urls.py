@@ -329,17 +329,17 @@ def get_card(request):
         card_index = request.GET.get('card_index', None)
         card_index = int(card_index)
         user_id = request.session.get('user_id', None)
-        user_id = 'debug'
+        # user_id = 'debug'
         if user_id:
             try:
-                # u = YibanUser.objects.get(user_id=user_id)
-                # u.today = card_index
-                # history = json.loads(u.history)
-                # now = datetime.utcnow.strftime(date_format)
-                # if history.get(now, 0) < card_index:
-                #     history[now] = card_index
-                # u.history = json.dumps(history)
-                # u.save()
+                u = YibanUser.objects.get(user_id=user_id)
+                u.today = card_index
+                history = json.loads(u.history)
+                now = datetime.utcnow.strftime(date_format)
+                if history.get(now, 0) < card_index:
+                    history[now] = card_index
+                u.history = json.dumps(history)
+                u.save()
                 # 随便返回二十个单词
                 return JsonResponse({'code': 'success', 'data': vocabulary(
                     card_index)})
@@ -355,9 +355,8 @@ def get_user_info(request):
     if request.method == 'GET':
         access_token = request.session.get('access_token', None)
         if access_token:
-            r = requests.post('https://openapi.yiban.cn/user/me', data={
-                'access_token': access_token
-            })
+            r = requests.get('https://openapi.yiban.cn/user/me?access_token='
+                             + access_token)
             r.encoding = 'utf-8'
             result = json.loads(r.text)
             if result.get('status', None) == 'success':
