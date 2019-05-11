@@ -358,9 +358,10 @@ def get_user_info(request):
             print(access_token)
             r = requests.get('https://openapi.yiban.cn/user/me?access_token='
                              + access_token)
-            r.encoding = 'utf-8'
-            print(r.text)
-            result = json.loads(r.text)
+            # r.encoding = 'utf-8'
+            # print(r.text)
+            # result = json.loads(r.text)
+            result = r.json()
             if result.get('status', None) == 'success':
                 return {
                     'code': 'success',
