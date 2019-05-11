@@ -13,6 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from django.views.decorators.csrf import csrf_exempt
@@ -129,25 +131,215 @@ def history(request):
 
 
 def vocabulary(idx):
-    return {
-        'word': 'test',
-        'desc': '中文解释: 测试'
-    }
+    if idx < 1 or idx > 20:
+        return {
+            'word': 'error',
+            'desc': """['erә] - ※ ★★★
+n. 错误, 过失, 失误, 误差
+[计] 错误
+(高研四六托 2198/1595)"""
+        }
+    else:
+        return {
+            '1': {
+                'word': 'test',
+                'desc': '中文解释: 测试'
+            },
+            '2': {
+                'word': 'encapsulate',
+                'desc': """
+    [in'kæpsәleit] - ★
+    vt. 装入胶囊, 封进内部, 压缩
+    vi. 做成胶囊
+    时态: encapsulated, encapsulating, encapsulates
+    (宝 15818/11424)
+                """
+            },
+            '3': {
+                'word': 'summarize',
+                'desc': """
+                ['sʌmәraiz] - ★
+    v. 概述, 总结
+    时态: summarized, summarizing, summarizes
+    (研四六 5532/7347)
+                """
+            },
+            '4': {
+                'word': 'abridge',
+                'desc': """
+                [ә'bridʒ]
+    vt. 缩短, 删节, 减少, 剥夺
+    [法] 剥夺; 节略
+    时态: abridged, abridging, abridges
+    (托雅宝 26746/36604)
+                """
+            },
+            '5': {
+                'word': 'abbreviate',
+                'desc': '''
+                [ә'bri:vieit]
+    vt. 缩写, 使...简略, 缩短
+    vi. 使用缩写词
+    时态: abbreviated, abbreviating, abbreviates
+    (托宝 22759/20690)
+                '''
+            },
+            '6': {
+                'word': 'phrase',
+                'dsec': '''
+                [freiz] - ※ ★★★
+    n. 惯用语, 词组, 成语, 措词, 乐句
+    vt. 用短语表达, 把(乐曲)分成短句
+    [计] 短语
+    时态: phrased, phrasing, phrases
+    (高研四六托 2589/2081)
+                '''
+            },
+            '7': {
+                'word': 'felicity',
+                'desc': '''
+                [fә'lisiti]
+n. 快乐, 幸福, 幸运
+(-/10891)
+                '''
+            },
+            '8': {
+                'word': 'domestic',
+                'desc': '''
+                [dәu'mestik] - ※ ★★★★
+a. 家庭的, 国内的, 驯养的
+[医] 家庭的, 家用的
+(研四六托雅 1547/1381)
+                '''
+            },
+            '9': {
+                'word': 'economy',
+                'desc': '''
+                [i'kɒnәmi] - ※ ★★★★★
+n. 经济, 理财, 节约
+[医] 经济, 整体
+(研四六雅 645/817)
+                '''
+            },
+            '10': {
+                'word': 'political',
+                'desc': '''
+                [pә'litikl] - ※ ★★★★★
+a. 政治的, 政治上的, 政党的, 从事政治的
+[法] 政治的, 政治上的, 党派政治的
+(高研四六雅 277/292)
+                '''
+            },
+            '11': {
+                'word': 'offense',
+                'desc': '''
+                [ә'fens]
+n. 犯罪, 伤感情, 攻击
+(2828/42743)
+                '''
+            },
+            '12': {
+                'word': 'criminal',
+                'desc': '''
+                ['kriminәl] - ※ ★★★★
+n. 罪犯, 犯人, 刑事
+a. 犯了罪的, 刑事的, 有罪的
+(高研四六雅 1953/2063)
+                '''
+            },
+            '13': {
+                'word': 'psychology',
+                'desc': '''
+                [sai'kɒlәdʒi] - ★★★
+n. 心理学, 心理状态
+[医] 心理学
+(高研六托雅宝 2972/2980)
+                '''
+            },
+            '14': {
+                'word': 'developmental',
+                'desc': '''
+                [di.velәp'mentәl] - ★
+a. 发展的, 进化的, 启发的
+[医] 发育的
+(4588/8246)
+                '''
+            },
+            '15': {
+                'word': 'strategy',
+                'desc': '''
+                ['strætidʒi] - ※ ★★★★
+n. 战略, 策略
+[经] 战略, 策略
+(研四六托雅 844/1127)
+                '''
+            },
+            '16': {
+                'word': 'implement',
+                'desc': '''
+                ['implimәnt] - ★★★
+n. 工具, 器具, 手段
+vt. 实现, 使生效, 执行
+时态: implemented, implementing, implements
+(研四六托雅宝 2285/2149)
+                '''
+            },
+            '17': {
+                'word': 'recommendation',
+                'desc': '''
+                [.rekәmen'deiʃәn]
+n. 推荐, 介绍, 推荐信, 劝告
+[经] 建议书
+(四六托雅 2765/2208)
+                '''
+            },
+            '18': {
+                'word': 'involvement',
+                'desc': '''
+                [in'vɔlvmәnt] - ※ ★★★
+n. 卷入, 牵连, 包含, 困窘
+[经] 财政困难, 经济上的困窘
+(2311/2139)
+                '''
+            },
+            '19': {
+                'word': 'emotional',
+                'desc': '''
+                [i'mәuʃәnәl] - ※ ★★★
+a. 情绪的, 情感的
+[医] 情绪的
+(四六托 1617/2389)
+                '''
+            },
+            '20': {
+                'word': 'demand',
+                'desc': '''
+                [di'mɑ:nd] - ※ ★★★★★
+n. 要求, 需求, 需要
+v. 要求, 查询
+时态: demanded, demanding, demands
+(高研四六宝 1287/723)
+                '''
+            }
+        }[str(idx)]
 
 
 def get_card(request):
     if request.method == 'GET':
         card_index = request.GET.get('card_index', None)
+        card_index = int(card_index)
         user_id = request.session.get('user_id', None)
+        user_id = 'debug'
         if user_id:
             try:
-                u = YibanUser.object.get(user_id=user_id)
-                u.today = card_index
-                history = json.loads(u.history)
-                now = datetime.utcnow.strftime(date_format)
-                history[now] = card_index
-                u.history = json.dumps(history)
-                u.save()
+                # u = YibanUser.objects.get(user_id=user_id)
+                # u.today = card_index
+                # history = json.loads(u.history)
+                # now = datetime.utcnow.strftime(date_format)
+                # if history.get(now, 0) < card_index:
+                #     history[now] = card_index
+                # u.history = json.dumps(history)
+                # u.save()
                 # 随便返回二十个单词
                 return JsonResponse({'code': 'success', 'data': vocabulary(
                     card_index)})
@@ -199,4 +391,7 @@ urlpatterns = [
     url(r'^$', yiban_login),
     path('main.html', TemplateView.as_view(
         template_name="main.html")),
-]
+    path('card.html', TemplateView.as_view(
+        template_name='card.html'
+    ))
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
