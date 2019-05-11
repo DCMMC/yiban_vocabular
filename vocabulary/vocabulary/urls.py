@@ -363,13 +363,13 @@ def get_user_info(request):
             # result = json.loads(r.text)
             result = r.json()
             if result.get('status', None) == 'success':
-                return {
+                return JsonResponse({
                     'code': 'success',
                     'data': {
                         'yb_username': result['info']['yb_username'],
                         'yb_userhead': result['info']['yb_userhead']
                     }
-                }
+                })
             else:
                 return JsonResponse({
                     'code': 'error', 'data': result['info']['msgCN']})
