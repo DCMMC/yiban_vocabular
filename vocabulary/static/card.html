@@ -16,8 +16,16 @@
 		<link rel="stylesheet" href="css/calendar.css">
 		<script src="js/calendar.js">
 	
-
-	 </script>
+     </script>
+     <script type="text/javascript">
+	 
+        $(document).ready(function()
+           {
+               $("#tomain").hide();
+               
+           });
+        
+        </script>
 	 <script>
 		 var currentpage = 1;
 		 var debug = {
@@ -73,6 +81,10 @@
 			console.log(len);
 			var newc = content.slice(0,len-3);
 			page = parseInt(newc);
+            if(page===19)
+            {
+                $("#tomain").show();
+            }
 			if(page>=20)
 			{
 				alert("不能再下一页了！");
@@ -105,7 +117,6 @@
     //          url: "card",
     //          data: {
 	// 			 page = parseInt(newc),
-
     //             },
     //          dataType: "json",
     //          success: function(data){
@@ -113,12 +124,10 @@
 	// 				   meaning = data.meaning; 
     //                   }
     //      });
-
     });
 		}
 			
 		},
-
 		receive1:function()
 		{
 			console.log("received a message");
@@ -130,7 +139,6 @@
 			body {
 				background-color: #F9F9F9;
 			}
-
 			#header {
 				background-color: #FFFFFF;
 				margin-top: 10px;
@@ -140,7 +148,6 @@
 				padding: 5px;
                 height: 30px;
 			}
-
 			#section1 {
 				margin-top: 10px;
 				margin-right: 10px;
@@ -152,7 +159,6 @@
 				text-align: center;
 				padding: 65px;
 			}
-
 			#section1 .btn {
 				width: 20%;
 				height: 40px;
@@ -160,7 +166,6 @@
 				background-color: #00D269;
 				color: #FFFFFF;
 			}
-
             #section2 .btn {
 				width: 34%;
 				height: 40px;
@@ -168,7 +173,6 @@
 				background-color: #00D269;
 				color: #FFFFFF;
 			}
-
 			#section2 {
 				margin-top: 10px;
 				margin-right: 10px;
@@ -179,9 +183,7 @@
 				text-align: center;
 				padding: 10px;
 			}
-
            
-
 			#section3 {
 				margin-top: 10px;
 				margin-right: 10px;
@@ -204,19 +206,16 @@
 			#section2 .nav {
 				background-color: #FFFFFF;
 			}
-
 			#section2 .nav li {
 				display: inline-block;
 				width: 33%;
 			}
-
 			#section2 .nav li.active a {
 				border: none;
 				background-color: transparent;
 				border-bottom: 2px solid #00D269;
 				color: #00D269;
 			}
-
  			#section2 .tab-content {
 				height: 300px;
 				background-color: #FFFFFF;
@@ -229,7 +228,6 @@
             .text1{
                 text-align:left;
                 padding: 20px;
-
             }
 			#p1 {
 				
@@ -281,7 +279,8 @@
                         <button class="btn btn-default" type="submit" onclick=message.nextpage()>下一个</button><!-- 打卡按钮 -->
                     </div>
                     <div style="padding: 30px;" />
-                    <button class="btn btn-default" onclick="window.location.href = '/main.html';">返回主页</button>
+                    <div class="row">
+                    <button class="btn btn-default"  id = "tomain" onclick="window.location.href = '/main.html';">返回主页</button></div>
                 </div>
             </section>
        
