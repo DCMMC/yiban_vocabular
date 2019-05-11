@@ -14,47 +14,7 @@
 		<script src="js/bootstrap.min.js"></script>
 		
 		<link rel="stylesheet" href="css/calendar.css">
-		<script src="js/calendar.js">
-
-		$.ajax({
-             type: "GET",
-             url: "user_info",
-             data: {
-				 card_index: page - 1,
-                },
-             dataType: "json",
-             success: function(data){
-             	console.log(data)
-             	if (data.code === 'error') {
-             		alert(data.data)
-             	} else {
-             		var name = data.data.yb_username;
-					var head = data.data.yb_userhead;
-					$('#username').text(name)
-					$('#headImg').attr('src', head)
-             	}
-             }
-         });
-
-		$.ajax({
-             type: "GET",
-             url: "get_history",
-             data: {
-				 card_index: page - 1,
-                },
-             dataType: "json",
-             success: function(data){
-             	console.log(data)
-             	if (data.code === 'error') {
-             		alert(data.data)
-             	} else {
-             		var history = data.data;
-					$('#history').text('已坚持' + Object.keys(history).length + '次')
-             	}
-             }
-         });
-		
-	 </script>
+		<script src="js/calendar.js"></script>
 		
 		<style type="text/css">
 			body {
@@ -179,6 +139,45 @@
 		</section>
 
 
+	<script type="text/javascript">
+		$.ajax({
+             type: "GET",
+             url: "user_info",
+             data: {
+				 card_index: page - 1,
+                },
+             dataType: "json",
+             success: function(data){
+             	console.log(data)
+             	if (data.code === 'error') {
+             		alert(data.data)
+             	} else {
+             		var name = data.data.yb_username;
+					var head = data.data.yb_userhead;
+					$('#username').text(name)
+					$('#headImg').attr('src', head)
+             	}
+             }
+         });
+
+		$.ajax({
+             type: "GET",
+             url: "get_history",
+             data: {
+				 card_index: page - 1,
+                },
+             dataType: "json",
+             success: function(data){
+             	console.log(data)
+             	if (data.code === 'error') {
+             		alert(data.data)
+             	} else {
+             		var history = data.data;
+					$('#history').text('已坚持' + Object.keys(history).length + '次')
+             	}
+             }
+         });
+	</script>
 
 	</body>
 </html>
