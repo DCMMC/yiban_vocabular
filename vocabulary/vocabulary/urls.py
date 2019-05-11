@@ -335,7 +335,7 @@ def get_card(request):
                 u = YibanUser.objects.get(user_id=user_id)
                 u.today = card_index
                 history = json.loads(u.history)
-                now = datetime.utcnow.strftime(date_format)
+                now = datetime.utcnow().strftime(date_format)
                 if history.get(now, 0) < card_index:
                     history[now] = card_index
                 u.history = json.dumps(history)
