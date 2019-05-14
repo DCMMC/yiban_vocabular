@@ -77,7 +77,7 @@ def yiban_login(request):
                     # 主页
                     return redirect('http://' + deploy_domain + '/main.html')
                 else:
-                    HttpResponseForbidden()
+                    return HttpResponseForbidden()
             else:
                 # 需要用户授权
                 return redirect(
